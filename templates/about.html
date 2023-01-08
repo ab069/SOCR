@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #3f8b9f;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+   
+    <header class="site-header">
+        <div class="wrapper site-header__wrapper">
+          <div class="site-header__start">
+            <img src="{{url_for('static', filename='logo.png')}}" align="middle" style="width:100px;height:100px; padding: 20px;" />
+          </div>
+          <div class="site-header__end">
+            <nav class="nav">
+              <button class="nav__toggle" aria-expanded="false" type="button">
+                menu
+              </button>
+              <ul class="nav__wrapper">
+                <li class="nav__item"><a href="{{ url_for('home')}}">Home</a></li>
+                <li class="nav__item"><a href="{{ url_for('about')}}">About</a></li>
+                <li class="nav__item"><a href="{{ url_for('workplace')}}">Workplace</a></li>
+                <li class="nav__item"><a href="{{ url_for('contact')}}">Contact</a></li>
+              </ul>
+            </nav>
+            
+          </div>
+        </div>
+      </header>
+
+<div class="about-section">
+  <h1>About Us</h1>
+  <p>Some text about who we are and what we do.</p>
+  <p>A web based application which detects and extracts text from image, Further integrated with previous fyp "Wise Translator"  to make image to translation a seamless experience.</p>
+</div>
+
+<h2 style="text-align:center">Our Team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="{{url_for('static', filename='waleed.jpg')}}" align="middle" style="width:100%;height:100%; padding: 20px;" />
+      <div class="container">
+        <h2>Waleed Ahmad</h2>
+        <p class="title">i170351</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>i170351@nu.edu.pk</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="{{url_for('static', filename='umair.jpg')}}" align="middle" style=" width:50%;height:100%; padding: 20px;" />
+      <div class="container">
+        <h2>Umair Khalid</h2>
+        <p class="title">i170333</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>i170333@nu.edu.pk</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="{{url_for('static', filename='abdullah.jpg')}}" align="middle" style="width:100%;height:100%; padding: 20px;" />
+      <div class="container">
+        <h2>Abdullah Khan</h2>
+        <p class="title">i170159</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>i170159@nu.edu.pk</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<br><br><br>
+    <!-- Footer -->
+    <footer
+      class="w3-row-padding w3-padding-32"
+      style="background-color: #F4F5F8;"
+    >
+      <div class="w3-third">
+        <h4>Shaheen OCR</h4>
+        <p >A web based application which detects and extracts text from image, Further integrated with previous fyp "Wise Translator"  to make image to translation a seamless experience.</p>
+        
+      </div>
+
+      <div class="w3-third w3-leftbar w3-rightbar w3-border-white">
+        <h4>Architecture Diagram </h4>
+        <ul class="w3-ul w3-hoverable">
+          <li class="w3-padding-16">
+            <div > <img src="{{url_for('static', filename='Diagram.png')}}"  style="width:300px;height:100px; padding: 15px;" /></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="w3-third w3-serif ">
+        <h4>Tools Used</h4>
+        <p>
+          <span class="w3-tag w3-blue w3-margin-bottom">Python</span>
+          <span class="w3-tag w3-dark-blue w3-small w3-margin-bottom"
+            >Flask</span
+          >
+          <span class="w3-tag w3-dark-blue w3-small w3-margin-bottom"
+            >PyTorch</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >Numpy</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >Pandas</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >Ngrok</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >HTML</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">CSS</span>
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >VS Code</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >Colab</span
+          >
+        </p>
+      </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SOCR</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Karma"
+    /> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='index.css') }}"
+    />
+    <style>
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Karma", sans-serif;
+      }
+      .w3-bar-block .w3-bar-item {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrapper site-header__wrapper">
+        <div class="site-header__start">
+          <img src="{{url_for('static', filename='logo.png')}}" align="middle" style="width:100px;height:100px; padding: 20px;" />
+        </div>
+        <div class="site-header__end">
+          <nav class="nav">
+            <button class="nav__toggle" aria-expanded="false" type="button">
+              menu
+            </button>
+            <ul class="nav__wrapper">
+              <li class="nav__item"><a href="{{ url_for('home')}}">Home</a></li>
+              <li class="nav__item"><a href="{{ url_for('about')}}">About</a></li>
+              <li class="nav__item"><a href="{{ url_for('workplace')}}">Workplace</a></li>
+              <li class="nav__item"><a href="{{ url_for('contact')}}">Contact</a></li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </header>  
+    
+    <div class="project">
+      <div style="padding-left: 45%;"><h2>Shaheen OCR and Translation</h2></div>
+      <div class="w3-third">
+        <div>
+          <form
+            class="form"
+            action="{{ url_for('newProject')}}"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <button class="button-color button2" type="submit">Upload</button>
+            <input
+              type="file"
+              id="myFile"
+              name="filename"
+              style="display: none"
+              onchange="loadFile(event)"
+            />
+            <!-- <p>Upload Image</p> -->
+            <label for="myFile"
+              ><img
+                src="{{ url_for('static', filename='upload.png') }}"
+                alt=""
+                class="upload"
+            /></label>
+          </form>
+        </div>
+        <div class="form" style="min-height: 10rem">
+          <div>
+            <div class="text-field">
+              <button
+                type="button"
+                class="button-color button2"
+                onclick="extract(event)"
+                style="
+                  /* background-color: #f4f5f8; */
+                  /* width: 2rem; */
+                  /* margin-top: -1rem; */
+                  /* float: left; */
+                  margin-left: auto;
+                  margin-right: auto;
+                  font-weight: bold;
+                "
+              >
+                Extract
+              </button>
+              <div class="text-box" id="extractedText">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w3-twothird image-preview">
+        <h4 style="margin-left: 3rem">Image Preview</h4>
+        <div class="skeleton preview" id="imgBox"></div>
+      </div>
+      <div class="form" style="margin-top: 20rem; margin-right: 0;">
+          <div>
+            <div class="text-field">
+              <button
+                type="button"
+                class="button-color button2"
+                onclick="translateText(event)"
+                style="
+                  /* background-color: #f4f5f8; */
+                  /* margin-top: -1rem; */  
+                  font-weight: bold;
+                "
+              >
+                Translate
+              </button>
+              <div class="text-box" id="translatedText">
+              </div>
+            </div>
+          </div>
+          <!-- <div>
+            <button
+              type="button"
+              class="button-color button2"
+              onclick="translateText(event)"
+            >
+              Translate
+            </button>
+          </div> -->
+        </div>
+    </div>
+
+    <hr id="about" />
+
+    <!-- Footer -->
+   
+<br><br><br>
+<footer
+  class="w3-row-padding w3-padding-32"
+  style="background-color: #F4F5F8;"
+>
+  <div class="w3-third">
+    <h4>Shaheen OCR</h4>
+    <p >A web based application which detects and extracts text from image, Further integrated with previous fyp "Wise Translator"  to make image to translation a seamless experience.</p>
+    
+  </div>
+
+  <div class="w3-third w3-leftbar w3-rightbar w3-border-white">
+    <h4>Architecture Diagram </h4>
+    <ul class="w3-ul w3-hoverable">
+      <li class="w3-padding-16">
+        <div > <img src="{{url_for('static', filename='Diagram.png')}}"  style="width:300px;height:100px; padding: 15px;" /></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="w3-third w3-serif ">
+    <h4>Tools Used</h4>
+    <p>
+      <span class="w3-tag w3-blue w3-margin-bottom">Python</span>
+      <span class="w3-tag w3-dark-blue w3-small w3-margin-bottom"
+        >Flask</span
+      >
+      <span class="w3-tag w3-dark-blue w3-small w3-margin-bottom"
+        >PyTorch</span
+      >
+      <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+        >Numpy</span
+      >
+      <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+        >Pandas</span
+      >
+      <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+        >Ngrok</span
+      >
+      <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+        >HTML</span
+      >
+      <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">CSS</span>
+      <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+        >VS Code</span
+      >
+      <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+        >Colab</span
+      >
+    </p>
+  </div>
+</footer>
+
+<!-- End page content -->
+    <!-- </div> -->
+
+    <script>
+      // Script to open and close sidebar
+      function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+      }
+
+      function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+      }
+
+      // changing preview image
+      var imgBox = document.getElementById("imgBox");
+      var extractedText = document.getElementById("extractedText");
+      var translatedText = document.getElementById("translatedText");
+
+      var loadFile = async function (event) {
+        var blobURL = URL.createObjectURL(event.target.files[0]);
+        console.log(blobURL);
+
+        imgBox.style.backgroundImage = "url(" + blobURL + ")";
+
+        imgBox.style.backgroundSize = "100% 100%";
+        imgBox.style.height = "258px";
+        imgBox.style.width = "256px";
+        imgBox.classList.remove("skeleton");
+        // imgBox.style.backgroundColor = "black";
+
+        // const text = await new Response(blobURL).text()
+
+        // var xhr = new XMLHttpRequest();
+        // xhr.open("POST", "{{ url_for('newProject')}}", true);
+        // xhr.setRequestHeader("Content-Type", "application/json");
+        // setTimeout(() => {
+        //   xhr.send(
+        //   JSON.stringify({
+        //     value: text,
+        //   })
+        // );
+        // }, 1000)
+      };
+
+      // extract text
+      var extract = function (event) {
+        // extractedText.innerHTML =
+        //   '<p style="background-color:  #F4F5F8; width: 2rem;margin-top: -12px; margin-left: 2rem; font-weight: bold;">Text</p>' +
+        //   "Urdu Text Extracted Placeholder\n";
+        extractedText.innerHTML = "<div style='margin: 0.5rem;'>{{ extractedText }}</div>";
+        console.log("Extraction successful");
+      };
+
+      // translate text
+      var translateText = function (event) {
+        translatedText.innerHTML = "<div style='margin: 0.5rem;'>Urdu to English Text Placeholder</div>";
+        console.log("Translation successful");
+      };
+    </script>
+  </body>
+</html>
