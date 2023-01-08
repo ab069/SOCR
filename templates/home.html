@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SOCR</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Karma"
+    /> -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}" />
+    <style>
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Karma", sans-serif;
+      }
+      .w3-bar-block .w3-bar-item {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top menu -->
+    
+    <header class="site-header">
+      <div class="wrapper site-header__wrapper">
+        <div class="site-header__start">
+          <img src="{{url_for('static', filename='logo.png')}}" align="middle" style="width:100px;height:100px; padding: 20px;" />
+        </div>
+        <div class="site-header__end">
+          <nav class="nav">
+            <button class="nav__toggle" aria-expanded="false" type="button">
+              menu
+            </button>
+            <ul class="nav__wrapper">
+              <li class="nav__item"><a href="{{ url_for('home')}}">Home</a></li>
+              <li class="nav__item"><a href="{{ url_for('about')}}">About</a></li>
+              <li class="nav__item"><a href="{{ url_for('workplace')}}">Workplace</a></li>
+              <li class="nav__item"><a href="{{ url_for('contact')}}">Contact</a></li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </header>  
+      <main>
+        <div class="intro">
+          <h1>Shaheen OCR</h1>
+          <p>I am a web developer and I love to create websites.</p>
+          <button>Learn More</button>
+        </div>
+        <div class="achievements">
+          <div class="work">
+            <i class="fas fa-atom"></i>
+            <p class="work-heading">Projects</p>
+            <p class="work-text">I have worked on many projects and I am very proud of them. I am a very good developer and I am always looking for new projects.</p>
+          </div>
+          <div class="work">
+            <i class="fas fa-skiing"></i>
+            <p class="work-heading">Skills</p>
+            <p class="work-text">I have a lot of skills and I am very good at them. I am very good at programming and I am always looking for new skills.</p>
+          </div>
+          <div class="work">
+            <i class="fas fa-ethernet"></i>
+            <p class="work-heading">Network</p>
+            <p class="work-text">I have a lot of network skills and I am very good at them. I am very good at networking and I am always looking for new network skills.</p>
+          </div>
+        </div>
+        <div class="about-me" style="background-color: aliceblue;">
+          <div class="about-me-text">
+            <h2>About Me</h2>
+            <p class="work-text">I am a web developer and I love to create websites. <br>I am a very good developer and I am always looking for new projects. <br>I am a very good developer and I am always looking for new projects.</p>
+          </div>
+          <img src="{{url_for('static', filename='logo.png')}}" align="middle" style="width:300px;height: 300px; padding: 20px;" />
+        </div>
+      </main>
+      <br/>
+      <br/>
+
+    <!-- Footer
+    <footer
+      class="w3-row-padding w3-padding-32"
+      style="background-color: #c6d4ff;"
+    >
+      <div class="w3-third w3-center">
+        <h2>Get text from image (URDU)</h2>
+        <p>Get the text from image </p>
+        <a href="{{ url_for('shaheenocr')}}" role="button"
+                class="button-color button2"
+                style="
+                  /* background-color: #f4f5f8; */
+                  /* margin-top: -1rem; */  
+                  font-weight: bold;
+                "
+              >
+                Get Text
+      </a>
+      </div>
+
+      <div class="w3-third w3-leftbar w3-rightbar w3-border-white w3-center">
+        <h2>Get text from image(English)</h2>
+        <p>Get the text from image </p>
+        <a href="{{ url_for('englishocr')}}" role="button"
+                class="button-color button2"
+                style="
+                  /* background-color: #f4f5f8; */
+                  /* margin-top: -1rem; */  
+                  font-weight: bold;
+                "
+              >
+                Get Text
+      </a>
+      </div>
+
+      <div class="w3-third w3-serif  w3-center">
+        <h2>Get Urdu text from image and Translation</h2>
+        <p>Get the text from image and Translation </p>
+        <a href="{{ url_for('translation')}}" role="button"
+                class="button-color button2"
+                style="
+                  /* background-color: #f4f5f8; */
+                  /* margin-top: -1rem; */  
+                  font-weight: bold;
+                "
+              >
+                Get Text
+      </a>
+      </div>
+    </footer>
+
+
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <script>
+        // var gotoShaheenOCR = function (event) {
+        //     <a class="button-color whover" href="{{ url_for('home')}}" role="button">Home</a>
+        // }
+    </script>
+
+    <!-- Footer -->
+    <footer
+      class="w3-row-padding w3-padding-32"
+      style="background-color: #F4F5F8;"
+    >
+      <div class="w3-third">
+        <h4>Shaheen OCR</h4>
+        <p >A web based application which detects and extracts text from image, Further integrated with previous fyp "Wise Translator"  to make image to translation a seamless experience.</p>
+        
+      </div>
+
+      <div class="w3-third w3-leftbar w3-rightbar w3-border-white">
+        <h4>Architecture Diagram </h4>
+        <ul class="w3-ul w3-hoverable">
+          <li class="w3-padding-16">
+            <div > <img src="{{url_for('static', filename='Diagram.png')}}"  style="width:300px;height:100px; padding: 15px;" /></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="w3-third w3-serif ">
+        <h4>Tools Used</h4>
+        <p>
+          <span class="w3-tag w3-blue w3-margin-bottom">Python</span>
+          <span class="w3-tag w3-dark-blue w3-small w3-margin-bottom"
+            >Flask</span
+          >
+          <span class="w3-tag w3-dark-blue w3-small w3-margin-bottom"
+            >PyTorch</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >Numpy</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >Pandas</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >Ngrok</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >HTML</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">CSS</span>
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >VS Code</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >Colab</span
+          >
+        </p>
+      </div>
+    </footer>
+
+
+
+
+
+
+
+    </body>
