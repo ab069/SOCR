@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SOCR</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Karma"
+    /> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='index.css') }}"
+    />
+    <style>
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Karma", sans-serif;
+      }
+      .w3-bar-block .w3-bar-item {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar (hidden by default) -->
+    <nav
+      class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left"
+      style="display: none; z-index: 2; width: 40%; min-width: 300px"
+      id="mySidebar"
+    >
+      <a
+        href="javascript:void(0)"
+        onclick="w3_close()"
+        class="w3-bar-item w3-button"
+        >Close Menu</a
+      >
+      <a href="#project" onclick="w3_close()" class="w3-bar-item w3-button"
+        >Projects</a
+      >
+      <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button"
+        >About Us</a
+      >
+    </nav>
+
+    <!-- Top menu -->
+    <div class="w3-top nav-color">
+      <div class="nav-bar w3-xlarge">
+        <div
+          class="button-color nav-color whover"
+          onclick="w3_open()"
+          style="margin-left: 0; border: none"
+        >
+          ☰
+        </div>
+        <!-- <a href="{{ url_for('newProject')}}" class="w3-right w3-padding-16 button-color whover">Create New</a> -->
+        <a
+          class="button-color whover"
+          href="{{ url_for('index')}}"
+          role="button"
+          style="margin-left: auto; margin-right: auto"
+          >SOCR</a
+        >
+        <a
+          class="button-color whover"
+          href="{{ url_for('newProject')}}"
+          role="button"
+          >Workspace</a
+        >
+        <div class="nav-color button-color whover">Stats</div>
+        <!-- <div class="nav-color button-color">SOCR</div> -->
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="w3-third">
+        <div>
+          <form
+            class="form"
+            action="{{ url_for('newProject')}}"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <button class="button-color button2" type="submit">Upload</button>
+            <input
+              type="file"
+              id="myFile"
+              name="filename"
+              style="display: none"
+              onchange="loadFile(event)"
+            />
+            <!-- <p>Upload Image</p> -->
+            <label for="myFile"
+              ><img
+                src="{{ url_for('static', filename='upload.png') }}"
+                alt=""
+                class="upload"
+            /></label>
+          </form>
+        </div>
+        <div class="form" style="min-height: 10rem">
+          <div>
+            <div class="text-field">
+              <button
+                type="button"
+                class="button-color button2"
+                onclick="extract(event)"
+                style="
+                  /* background-color: #f4f5f8; */
+                  /* width: 2rem; */
+                  /* margin-top: -1rem; */
+                  /* float: left; */
+                  margin-left: auto;
+                  margin-right: auto;
+                  font-weight: bold;
+                "
+              >
+                Extract
+              </button>
+              <div class="text-box" id="extractedText">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w3-twothird image-preview">
+        <h4 style="margin-left: 3rem">Image Preview</h4>
+        <div class="skeleton preview" id="imgBox"></div>
+      </div>
+      <div class="form" style="margin-top: 20rem; margin-right: 0;">
+          <div>
+            <div class="text-field">
+              <button
+                type="button"
+                class="button-color button2"
+                onclick="translateText(event)"
+                style="
+                  /* background-color: #f4f5f8; */
+                  /* margin-top: -1rem; */  
+                  font-weight: bold;
+                "
+              >
+                Translate
+              </button>
+              <div class="text-box" id="translatedText">
+              </div>
+            </div>
+          </div>
+          <!-- <div>
+            <button
+              type="button"
+              class="button-color button2"
+              onclick="translateText(event)"
+            >
+              Translate
+            </button>
+          </div> -->
+        </div>
+    </div>
+
+    <hr id="about" />
+
+    <!-- Footer -->
+    <footer
+      class="w3-row-padding w3-padding-32"
+      style="background-color: #f4f5f8"
+    >
+      <div class="w3-third">
+        <h3>FYP 2022-2023</h3>
+        <p class="skeleton skeleton-text"></p>
+        <p class="skeleton skeleton-text"></p>
+        <p class="skeleton skeleton-text"></p>
+        <p class="skeleton skeleton-text"></p>
+        <p class="skeleton skeleton-half"></p>
+      </div>
+
+      <div class="w3-third w3-leftbar w3-rightbar w3-border-white">
+        <h3>Features & Future</h3>
+        <ul class="w3-ul w3-hoverable">
+          <li class="w3-padding-16">
+            <span class="w3-large"></span> Amazing feature<br />
+            <div class="skeleton skeleton-image-small"></div>
+          </li>
+          <li class="w3-padding-16">
+            <span class="w3-large"></span> Awesome feature<br />
+            <div class="skeleton skeleton-image-small"></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="w3-third w3-serif">
+        <h3>Tools Used</h3>
+        <p>
+          <span class="w3-tag w3-black w3-margin-bottom">Python</span>
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >Flask</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >PyTorch</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >Numpy</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >Pandas</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >Ngrok</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >HTML</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">CSS</span>
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >VS Code</span
+          >
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"
+            >Colab</span
+          >
+        </p>
+      </div>
+    </footer>
+
+    <!-- End page content -->
+    <!-- </div> -->
+
+    <script>
+      // Script to open and close sidebar
+      function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+      }
+
+      function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+      }
+
+      // changing preview image
+      var imgBox = document.getElementById("imgBox");
+      var extractedText = document.getElementById("extractedText");
+      var translatedText = document.getElementById("translatedText");
+
+      var loadFile = async function (event) {
+        var blobURL = URL.createObjectURL(event.target.files[0]);
+        console.log(blobURL);
+
+        imgBox.style.backgroundImage = "url(" + blobURL + ")";
+
+        imgBox.style.backgroundSize = "100% 100%";
+        imgBox.style.height = "258px";
+        imgBox.style.width = "256px";
+        imgBox.classList.remove("skeleton");
+        // imgBox.style.backgroundColor = "black";
+
+        // const text = await new Response(blobURL).text()
+
+        // var xhr = new XMLHttpRequest();
+        // xhr.open("POST", "{{ url_for('newProject')}}", true);
+        // xhr.setRequestHeader("Content-Type", "application/json");
+        // setTimeout(() => {
+        //   xhr.send(
+        //   JSON.stringify({
+        //     value: text,
+        //   })
+        // );
+        // }, 1000)
+      };
+
+      // extract text
+      var extract = function (event) {
+        // extractedText.innerHTML =
+        //   '<p style="background-color:  #F4F5F8; width: 2rem;margin-top: -12px; margin-left: 2rem; font-weight: bold;">Text</p>' +
+        //   "Urdu Text Extracted Placeholder\n";
+        extractedText.innerHTML = "<div style='margin: 0.5rem;'>{{ extractedText }}</div>";
+        console.log("Extraction successful");
+      };
+
+      // translate text
+      var translateText = function (event) {
+        translatedText.innerHTML = "<div style='margin: 0.5rem;'>Urdu to English Text Placeholder</div>";
+        console.log("Translation successful");
+      };
+    </script>
+  </body>
+</html>
